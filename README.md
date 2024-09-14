@@ -1,3 +1,17 @@
-[C++とPythonでOpenCVを実行するための環境構築 | Docker](https://qiita.com/Murakawa_Takuya/items/6f979c68f136599f3770)
+# 間違い探し
 
-こちらの記事で導入手順をまとめました。
+## 実行手順
+セットアップ
+```
+make build-opencv
+make build
+```
+コンテナの起動
+```
+make up
+```
+実行
+```
+make cpp-compile
+make run-cpp
+```
