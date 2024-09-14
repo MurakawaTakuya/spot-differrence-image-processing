@@ -1,0 +1,10 @@
+services:
+  opencv_container:
+    container_name: image_processing_with_opencv_container
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../:/work
+    working_dir: /work
+    tty: true
