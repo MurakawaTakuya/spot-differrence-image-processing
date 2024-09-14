@@ -10,15 +10,16 @@ MOUNT_DIR=/work/
 # Pythonスクリプトファイル名
 PYTHON_FILE=processImage.py
 
+# ベースイメージをビルド
+build-opencv:
+	@echo . && echo Building the image...
+	@docker build -t opencv-image -f ./docker/opencv/Dockerfile . 
+	@echo Image built successfully.
+
 # イメージをビルド
 build:
 	@echo . && echo Building the image...
 	@docker compose -f ./docker/compose.yml build
-	@echo Image built successfully.
-	
-build-opencv:
-	@echo . && echo Building the image...
-	@docker build -t opencv-image -f ./docker/opencv/Dockerfile . 
 	@echo Image built successfully.
 
 # コンテナを起動する(前回エラーでコンテナが停止していない場合に再起動する)
@@ -33,6 +34,7 @@ down:
 	@docker compose -f ./docker/compose.yml down
 	@echo Container stopped successfully.
 	
+# コンテナ内でbashを実行する
 exec:
 	@echo . && echo Executing the container...
 	@docker compose -f ./docker/compose.yml exec $(IMAGE_NAME) bash
