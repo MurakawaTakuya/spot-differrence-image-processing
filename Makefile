@@ -4,19 +4,8 @@ CONTAINER_NAME=image_processing_with_opencv_container
 # Dockerイメージ名
 IMAGE_NAME=opencv_container # imageをbuildした場合
 
-# 画像ファイル名と出力ファイル名
-IMAGE1=image1.jpg
-IMAGE2=image2.jpg
-OUTPUT_IMAGE=output.jpg
-
 # マウントディレクトリ名
 MOUNT_DIR=/work/
-
-# C++ソースファイル名
-CPP_FILE=processImage.cpp
-
-# C++実行ファイル名(バイナリファイル名)
-EXECUTABLE=processImage
 
 # Pythonスクリプトファイル名
 PYTHON_FILE=processImage.py
@@ -49,16 +38,10 @@ exec:
 	@docker compose -f ./docker/compose.yml exec $(IMAGE_NAME) bash
 	@echo Container executed successfully.
 
-# C++プログラムをコンパイルする
-cpp-compile:
-	@echo . && echo Compiling cpp program...
-	@docker compose -f ./docker/compose.yml exec $(IMAGE_NAME) bash -c "g++ -o $(EXECUTABLE) $(CPP_FILE) -I/usr/local/include/opencv4 -L/usr/local/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui -lopencv_imgproc"
-	@echo Program compiled successfully.
-
 # C++プログラムを実行する
 run-cpp:
 	@echo . && echo Running cpp program...
-	@docker compose -f ./docker/compose.yml exec $(IMAGE_NAME) bash -c "LD_LIBRARY_PATH=/usr/local/lib $(MOUNT_DIR)$(EXECUTABLE) $(IMAGE1) $(IMAGE2) $(OUTPUT_IMAGE)"
+	@docker compose -f ./docker/compose.yml exec $(IMAGE_NAME) bash -c "make test"
 	@echo Program finished.
 
 # Pythonスクリプトを実行する
