@@ -12,6 +12,6 @@ make up
 ```
 実行
 ```
-make cpp-compile
 make run-cpp
+
 ```
