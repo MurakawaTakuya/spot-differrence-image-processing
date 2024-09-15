@@ -6,9 +6,9 @@ OBJECTS = $(SOURCES:.cpp=.o)
 BINARY = myapp
 
 # 画像ファイル名と出力ファイル名
-IMAGE1=image1.jpg
-IMAGE2=image2.jpg
-OUTPUT_IMAGE=output.jpg
+IMAGE1=img/image1.jpg
+IMAGE2=img/image2.jpg
+OUTPUT_IMAGE=img/output.jpg
 
 # コンパイルルール
 $(BINARY): $(OBJECTS)

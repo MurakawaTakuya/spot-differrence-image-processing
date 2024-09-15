@@ -13,4 +13,5 @@ make up
 実行
 ```
 make run-cpp
+make run-python
 ```
